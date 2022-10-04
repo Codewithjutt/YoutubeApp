@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.iconpacks.net/icons/2/free-youtube-logo-icon-2431-thumb.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Api</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .main-container {
+            width: 100%;
+            min-height: 100vh;
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* justify-content: space-around;         */
+        }
+
+        .navbar {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* border: 2px solid red; */
+        }
+
+        .nav-con {
+            width: 20%;
+            height: 10vh;
+            /* border: 2px solid blue; */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+
+        .nav-con ul {
+            list-style-type: none;
+        }
+
+        .logo li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .logo li a {
+            color: black;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo li a i {
+            font-size: 20px;
+        }
+
+        .y-logo {
+            color: red;
+        }
+
+        .sp1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .con2 {
+            width: 55%;
+        }
+
+        .con2 ul {
+            list-style-type: none;
+        }
+
+        .con2 ul li {
+            display: inline-block;
+        }
+
+        .con2 ul .inp {
+            width: 550px;
+            height: 40px;
+            border: 1px solid rgb(155, 155, 155);
+            padding: 20px;
+        }
+
+        .inp::placeholder {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .fa-xmark {
+            font-size: 20px;
+            margin: 40px -40px;
+            color: grey;
+        }
+
+        .search-btn {
+            border: .5px solid rgb(155, 155, 155);
+            padding: 11px 20px;
+            margin-left: -8px;
+            font-size: 15px;
+            background-color: #F9F9F9;
+        }
+
+        .con2 li a {
+            color: black;
+        }
+
+        .fa-microphone {
+            color: black;
+            font-size: 20px;
+            padding: 10px 12px;
+            border-radius: 50%;
+            background-color: rgb(245, 245, 245);
+        }
+
+        /* Side COntent  */
+        .main-content {
+            width: 100%;
+            height: 100vh;
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+            justify-content: space-between;
+        }
+
+        .side {
+            width: 35%;
+            height: 90vh;
+            /* border: 2px solid blue; */
+            background-color: #F5F5F5;
+            display: flex;
+            align-items: center;
+        }
+
+        .side1 {
+            width: 65%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .side1-con {
+            width: 90%;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* border: 2px solid black; */
+        }
+
+        .side1-title {
+            width: 100%;
+            height: 20vh;
+            /* border: 2px solid red; */
+            padding: 20px;
+        }
+
+        .side1-title h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .side1-title p {
+            font-size: 14px;
+            color: rgb(114, 114, 114);
+        }
+
+        .side-end {
+            min-height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .s {
+            width: 80%;
+            height: 60vh;
+            display: flex;
+            flex-direction: row;
+            /* border: 2px solid red; */
+            cursor: pointer;
+        }
+
+        .s:hover {
+            /* background-color: #F9F9F9; */
+            opacity: .6;
+        }
+
+        .s h1 {
+            font-size: 16px;
+        }
+
+        .s img {
+            width: 40%;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navbar">
+            <div class="nav-con">
+                <ul class="logo">
+                    <li><a href=""><i class="fa-solid fa-bars"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-youtube y-logo" style="font-size:25px;"></i>&nbsp;<span
+                                class="sp1">Youtube</span></a></li>
+                </ul>
+            </div>
+            <div class="nav-con con2">
+                <ul>
+                    <input type="text" placeholder="search" class="inp">
+                    <li><a href=""><i class="fa-solid fa-xmark"></i></a></li>
+                    <li class="search-btn"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                    <li><a href=""><i class="fa-solid fa-microphone"></i></a></li>
+                </ul>
+            </div>
+            <div class="nav-con con3">
+                <ul>
+                    <li><a href=""><i class="fa-solid fa-bell"></i></a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="side side1">
+                <div class="side1-con">
+                    <iframe src="" frameborder="1" width="750px" height="400px"></iframe>
+                    <div class="side1-title">
+                        <h1 class="title-h1">No Love (Official Audio) - Shubh | thiarajxtt</h1>
+                        <p>25,762,838 viewsFeb 25, 2022</p>
+                    </div>
+                </div>
+            </div>
+            <div class="side side-end">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var side = document.querySelector(".side-end")
+        var sideTitle = document.querySelector(".title-h1")
+        var btn = document.querySelector(".search-btn")
+        var inp = document.querySelector(".inp")
+        var iframe = document.querySelector("iframe")
+        var key = "AIzaSyDeoxy_2QFz9Pd0nOkGjxQrjIkxWzWKS5s"
+        btn.addEventListener("click", searchByKeyword)
+        let YouTube = "https://www.googleapis.com/youtube/v3"
+        async function searchByKeyword(e) {
+            e.preventDefault()
+            var inpvalue = inp.value
+            await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${inpvalue}&key=${key}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data, 'data..............');
+                    var itemsArr = data.items
+                    console.log(itemsArr);
+                    side.innerHTML = itemsArr.map((ar) => {
+                        return `
+                <div class="s" onCLick="getVideo('${ar.id.videoId}','${ar.snippet.title}')">
+                    <img src="${ar.snippet.thumbnails.high.url}" alt="">
+                    <h1>${ar.snippet.title}</h1>
+                </div>`
+                    })
+                })
+        }
+        function getVideo(id, ti) {
+            // console.log(id,'id..........');
+            iframe.setAttribute("src", `https://www.youtube.com/embed/${id}`)
+            console.log(ti, 'tiiiiiiiiiiiiiiii');
+            sideTitle.innerHTML = ti
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
